@@ -51,7 +51,7 @@
             <h3>Bilder</h3>
             <ul class="image-list">
                 <li class="image-item" v-for="image in activeItem.imgs">
-                    <img :src="image.small"/>
+                    <img :src="image"/>
                 </li>
             </ul>
             <div v-if="activeArticle.description !== ''">
