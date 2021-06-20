@@ -1,1 +1,67 @@
-Hello
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf8">
+    </head>
+    <body>
+        <div id="app">
+            <div class="navigation-toggle button" @click="toggleNavigation()">
+                <span v-if="!navigationActive">Menu</span>
+                <span v-if="navigationActive">X</span>
+            </div>
+            <navigation v-bind:class="{hidden: !navigationActive}"></navigation>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+        </div>
+    </body>
+    <script type="text/x-template" id="navigation-template">
+        <nav class="main-nav">
+            <ul class="main-menu">
+                <li class="nav-item" v-for="tag in navigation" v-if="tag.articles.length > 0" v-bind:class="{active: tag.slug === navigationTagActive}">
+                    <a href="#" @click="navigationTagActive = tag.slug">{{ tag.name }} ({{ tag.articles.length }})</a>
+                    <ul class="sub-nav">
+                        <li class="sub-nav-item" v-for="article in tag.articles" v-if="article.items.length > 0">
+                            <router-link :to="'/map/' + article.slug">{{ article.name }} ({{ article.items.length }})</router-link>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </script>
+    <script type="text/x-template" id="item-template">
+        <div class="item" v-if="activeItem">
+            <router-link class="button" :to="'/map/' + activeArticle.slug">Visa kartan igen</router-link>
+            <h2>{{ activeArticle.name }}</h2>
+            <p class="warning" v-if="activeItem.private">OBS privat tomt</p>
+            <span><b>Koordinater:</b> {{ activeItem.coordinate.lat.toFixed(4) }},{{ activeItem.coordinate.lng.toFixed(4) }} (error: {{ activeItem.coordinate.error }})</span><br>
+            <span><b><a href="https://maps.google.com/pluscodes/">Plus Code</a>:</b> {{ activeItem.coordinate.openlocationcode }}</span>
+            <div v-if="activeItem.comment">
+                <h3>Kommentar</h3>
+                <p>{{ activeItem.comment }}</p>
+            </div>
+            <h3>Taggar</h3>
+            <ul class="tag-list">
+                <li v-for="tag in activeArticle.tags" class="tag" :title="tag.desc">
+                    {{ tag.name }}
+                </li>
+            </ul>
+            <h3>Bilder</h3>
+            <ul class="image-list">
+                <li class="image-item" v-for="image in activeItem.imgs">
+                    <img :src="image.small"/>
+                </li>
+            </ul>
+            <div v-if="activeArticle.description !== ''">
+                <h3>Information</h3>
+                <p>{{ activeArticle.description }}</p>
+            </div>
+        </div>
+    </script>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.1/dist/vue-router.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+    <script src="static/main.js"></script>
+</html>

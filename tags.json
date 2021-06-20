@@ -1,0 +1,64 @@
+{
+    "tags": [
+        {
+            "name": "Anv\u00e4ndbar",
+            "desc": "Anv\u00e4ndbar till annat \u00e4n att \u00e4ta",
+            "slug": "anvandbar"
+        },
+        {
+            "name": "Blomma",
+            "desc": "",
+            "slug": "blomma"
+        },
+        {
+            "name": "Buske",
+            "desc": "",
+            "slug": "buske"
+        },
+        {
+            "name": "B\u00e4r",
+            "desc": "B\u00e4r som g\u00e5r att \u00e4ta",
+            "slug": "bar"
+        },
+        {
+            "name": "Djur",
+            "desc": "",
+            "slug": "djur"
+        },
+        {
+            "name": "Information",
+            "desc": "Information d\u00e4r plats \u00e4r viktig",
+            "slug": "information"
+        },
+        {
+            "name": "Insekt",
+            "desc": "",
+            "slug": "insekt"
+        },
+        {
+            "name": "Invasiv",
+            "desc": "",
+            "slug": "invasiv"
+        },
+        {
+            "name": "Mark\u00e4garens tillst\u00e5nd",
+            "desc": "Mark\u00e4garens tillst\u00e5nd kr\u00e4vs f\u00f6r att plocka",
+            "slug": "markagarens_tillstand"
+        },
+        {
+            "name": "Tr\u00e4d",
+            "desc": "",
+            "slug": "trad"
+        },
+        {
+            "name": "\u00c4tbar",
+            "desc": "Om delar p\u00e5 v\u00e4xten \u00e4r \u00e4tbara",
+            "slug": "atbar"
+        },
+        {
+            "name": "\u00c5rligen \u00e5terkommande",
+            "desc": "\u00c5terkommer varje \u00e5r \u00e4ven om de inte finns hela vintern",
+            "slug": "arligen_aterkommande"
+        }
+    ]
+}
